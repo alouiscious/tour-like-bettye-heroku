@@ -1,0 +1,16 @@
+<form action="/user/" method="POST">
+  <h2>
+  Please setup a tour by entering your details
+  </h2>
+  <label>Name:</label>
+ 
+  <br>
+      <%# :last_name
+      :email
+      :password_digest
+      :phone
+      t.timestamps null: false %>
+  <input type="text" name="owner[name]" id="owner_name">
+ 
+  <input type="submit" value="Create Owner">
+</form>  
