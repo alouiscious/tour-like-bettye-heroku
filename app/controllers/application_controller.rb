@@ -8,8 +8,12 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    erb :'/users/index'
+    erb :'/user/index'
 
+  end
+
+  get "/new" do
+    erb :'/user/new'
   end
 
 end
