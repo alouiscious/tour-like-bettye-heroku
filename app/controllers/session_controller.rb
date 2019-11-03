@@ -8,24 +8,9 @@ class SessionController < Sinatra::Base
     enable :sessions
     set :session_secret, 'pw'
   end
-
-  get '/success' do
-    if logged_in?
-      erb :'session/success'
-    else
-      redirect "/"
-  end
-
-  get '/failure' do
-    erb :'/session/failure'
-  end
-
-  get '/logout' do
-    session.clear
-    redirect "/"
-  end
-
+  
   helpers do
+
     def logged_in?
       !!session[:user_id]
     end
@@ -34,5 +19,24 @@ class SessionController < Sinatra::Base
       User.find(session[:user_id])
     end
   end
-  
+
+  get '/success' do
+    if logged_in?
+      erb :'/user/user_venues'
+    else
+      redirect '/'
+    end
+  end
+
+  get '/failure' do
+    erb :'/session/failure'
+  end
+
+  get '/logout' do
+    session.clear
+    redirect '/'
+  end
+
+
+
 end

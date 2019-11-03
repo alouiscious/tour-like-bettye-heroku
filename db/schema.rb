@@ -30,9 +30,11 @@ ActiveRecord::Schema.define(version: 4) do
     t.string   "phone"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "username"
     t.string   "bandname"
     t.string   "fullname"
     t.string   "nickname"
+    t.string   "zipcode"
   end
 
   create_table "venues", force: :cascade do |t|
