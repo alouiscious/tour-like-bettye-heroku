@@ -3,15 +3,15 @@ require './config/environment'
 class UserController < Sinatra::Base
 
   get '/' do
-    erb :'user/index'
+    redirect '/new'
   end
 
   get "/new" do
-    erb :'/user/new'
+    erb :'index'
   end
 
   get '/signup' do
-    erb :'/user/index'
+    erb :'new'
   end
 
   post '/user/signup' do
