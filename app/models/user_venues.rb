@@ -1,3 +1,4 @@
-# class UserVenues < Sinatre::Base
-#   belongs_to :user
-# end
+class UserVenues < ActiveRecord::Base
+  belongs_to :user
+  belongs_to :venue
+end

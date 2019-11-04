@@ -1,9 +1,9 @@
 require './config/environment'
 
-class UserController < ApplicationController
+class UserController < Sinatra::Base
 
-  get "/" do
-    erb :'/user/index'
+  get '/' do
+    erb :'user/index'
   end
 
   get "/new" do

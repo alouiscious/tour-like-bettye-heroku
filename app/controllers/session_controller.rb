@@ -1,6 +1,6 @@
 require './config/environment'
 
-class SessionController < ApplicationController
+class SessionController < Sinatra::Base
 
   
   helpers do
