@@ -7,6 +7,9 @@ gem 'rake'
 gem 'require_all'
 gem 'thin'
 gem 'bcrypt'
+gem 'rails_12factor'
+gem 'foreman'
+gem 'dotenv'
 
 
 group :development do
