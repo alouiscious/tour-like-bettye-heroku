@@ -8,7 +8,7 @@ ActiveRecord::Base.establish_connection(
   :database => "db/#{ENV['SINATRA_ENV']}.sqlite"
 )
 
-set :database_file "./database.yml"
+set :database_file "database.yml"
 require './app/controllers/session_controller'
 require './app/controllers/user_controller'
 require './app/controllers/application_controller'
