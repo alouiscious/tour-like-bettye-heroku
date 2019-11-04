@@ -1,13 +1,7 @@
 require './config/environment'
 
-class SessionController < Sinatra::Base
+class SessionController < ApplicationController
 
-  configure do
-    set :public_folder, 'public'
-    set :views, 'app/views'
-    enable :sessions
-    set :session_secret, 'pw'
-  end
   
   helpers do
 
@@ -22,16 +16,14 @@ class SessionController < Sinatra::Base
 
   get '/success' do
     if logged_in?
-      erb :'/user/user_venues'
+      erb :'/user/success'
     else
-      redirect '/'
+      redirect '/failure'
     end
   end
-
   get '/failure' do
     erb :'/session/failure'
   end
-
   get '/logout' do
     session.clear
     redirect '/'

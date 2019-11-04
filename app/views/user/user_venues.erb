@@ -1,3 +1,8 @@
 user_venues.erb
 
-"Welcome, <%=@user.name%>!"
+<!--
+"Let's get some gigs, <%=@user.name%>!"
+<% @venues.each do |venue| %>
+  <input type="checkbox" name="user[venue_ids][]" id="<%= venue.id %>" value="<%= venue.id %>"><%= venue.name %><br>
+<% end %>
+-->
