@@ -1,5 +1,4 @@
 new.erb
-<form action="/signup/" method="POST">
   <h2>
     Please setup a tour account by entering your details
   </h2>
@@ -19,7 +18,7 @@ new.erb
         </form>
   </div>
     <div class='signup'>
-    <form action="/user/signup" method="POST">
+    <form action="/signup" method="POST">
     <label>First Name: </label>
     <input id="first_name" type="text" name="first_name" required>
     <br>
@@ -39,9 +38,17 @@ new.erb
     <label>Band/Artist Name: </label>    
     <input id="bandname" type="text" name="bandname" >
     <br>
-    <label>Nick Name: </label>    
-    <input id="nickname" type="text" name="nickname" >
+    <label>Phone: </label>    
+    <input id="Phone" type="integer" name="Phone" >
     <br>  
-    <input id="create_acct" type="submit" name="create_acct" value="Create Account">
+    
+    <label>Zip Code: </label>    
+    <input id="zipcode" type="text" name="zipcode" >
+    <br> 
+        
+    
+        <input id="create_acct" type="submit" name="create_acct" value="Create Account">
   </div> 
 </form>   
+
+
