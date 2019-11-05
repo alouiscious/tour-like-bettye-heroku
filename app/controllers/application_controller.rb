@@ -3,7 +3,7 @@ require './config/environment'
 class ApplicationController < Sinatra::Base
  
   configure do
-    set :public_folder, 'public'
+    set :public_folder, './public'
     set :views, 'app/views'
     # set :views, Proc.new { File.join(root, "./views") }
     # register Sinatra::Flash
@@ -13,24 +13,21 @@ class ApplicationController < Sinatra::Base
   end
     
   get '/' do
-    redirect to  '/new'
-  end
-
-  get '/new' do
     erb :'user/index'
   end
 
   get '/signup' do
-    erb :'user/new'
+    erb :'session/signup'
   end
 
   post '/signup' do
-    # @user = User.create(:username => params[:username], :password => params[:password], :email => params[:email])
-    @user = User.create(params[:user])
+    @user = User.create(:username => params[:username], :password => params[:password], :email => params[:email], :phone => params[:phone], :bandname => params[:bandname], :first_name => params[:first_name], :last_name => params[:last_name], :zipcode => params[:zipcode])
     if @user.save
       redirect "/success"
+
     else
-      redirect "/failure"
+      # redirect "/session/failure"
+      erb :'/session/failure'
     end
 
     @users = User.all
@@ -39,7 +36,7 @@ class ApplicationController < Sinatra::Base
 
   get '/login' do
     @users = User.all
-    erb :'/user/new'
+    erb :'/user/login'
   end
   
   
@@ -47,7 +44,7 @@ post '/login' do
     user = User.find_by(:username => params[:username])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect "/success"
+      redirect "/user/user_venues"
     else
       redirect "/failure"
     end
