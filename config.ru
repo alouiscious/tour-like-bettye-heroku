@@ -15,6 +15,6 @@ require_all 'app'
 
 run ApplicationController
 
-use UserController
+# use UserController
 use SessionController
 
