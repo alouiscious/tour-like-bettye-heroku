@@ -31,6 +31,7 @@ class SessionController < Sinatra::Base
 
   get '/success/:id' do
     @user = User.find_by_id(params[:id])
+    
     erb :'user/user_venues'
   end
 
