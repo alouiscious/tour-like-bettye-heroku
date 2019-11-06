@@ -17,13 +17,13 @@ index.erb
             </div>
 
             <div class="sidebar">
-                  <h3>Welcome</h3>
+                  <h3>Welcome <%= session[:first_name]%></h3>
                   <ul>
                   <li><b>Ruby:</b> <%= RUBY_VERSION %></li>
                   <li><b>Environment:</b> <%= ENV["RACK_ENV"] %></li>
                   <li><b>Server:</b> <%= @env["SERVER_SOFTWARE"] %></li>
                   <li><b>Port:</b> <%= @env["SERVER_PORT"] %></li>
-                  <li><b>Last Update:</b> <% %>
+                  <li><b>Last Update:</b> <%= session[:last_logged_in_at] %>
                   </ul>
             </div>
 

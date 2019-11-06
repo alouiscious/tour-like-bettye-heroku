@@ -1,4 +1,4 @@
 class UserVenues < ActiveRecord::Base
-  belongs_to :users
-  belongs_to :venues
+  belongs_to :user
+  belongs_to :venue
 end

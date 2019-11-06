@@ -17,7 +17,6 @@ group :development do
   gem 'shotgun'
   gem 'tux'
   gem 'pry'
-  gem 'sass'
   gem 'solargraph'
 end
 
