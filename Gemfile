@@ -19,6 +19,10 @@ group :development do
   gem 'pry'
 end
 
+group :production do 
+  gem 'pg', '0.20'
+end
+
 group :test do
   gem 'rspec'
   gem 'capybara'
