@@ -8,6 +8,7 @@ Dotenv.load if ENV['SINATRA_ENV'] == "development"
 #   :adapter => "sqlite3",
 #   :database => "db/#{ENV['SINATRA_ENV']}.sqlite"
 # )
+
 set :database_file, "./database.yml"
 
 require './app/controllers/application_controller'
