@@ -10,7 +10,11 @@ end
 require_relative 'app/controllers/application_controller'
 require_relative 'app/controllers/session_controller'
 require_relative 'app/controllers/user_controller'
+require_all 'app'
 # use Rack::MethodOverride
+
+run ApplicationController
+
 use UserController
 use SessionController
-run ApplicationController
+
