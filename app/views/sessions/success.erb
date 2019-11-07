@@ -1,9 +1,9 @@
 success.erb
 
 <%@user = User.find(session[:user_id])%>
-<h2>"Welcome, <%=[:user_id.name]%>!"</h2>
-<p>Welcome to the start you the first major tour.
-use the reserch andmapping tools to discover venues that are a perfect fit for your performaces.</p>
+<h2>"Welcome, <%= @user.first_name %>!"</h2>
+<p>I sayyyyy welcome to the start you the first major tour.<br>
+Use the reserch and mapping tools to discover venues that are a perfect fit for your performaces.</p>
 
 <ul>
   <h3>Collect a good list of Q&As</h3>
@@ -14,8 +14,8 @@ use the reserch andmapping tools to discover venues that are a perfect fit for y
   <li>Understand merch load/savles expectancies.</li>
 </ul>
 
-<h3>Then go there and kick ass andmake a name for yourself!<h3>
-@user_venues <!-- # show existing tour and venue selection-->
-<a href="/venues">Find New Tour Stops</a> 
+<h3>Then go there and kick ass and make a name for yourself!<h3>
+<!-- # show existing tour and venue selection-->
+<a href= "/venues">Find New Tour Stops</a> 
 <!-- Research additional tour stops.-->
- Goodluck, Alouiscious.
+<br> Goodluck, Alouiscious.

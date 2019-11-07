@@ -10,6 +10,7 @@ gem 'bcrypt'
 gem 'rails_12factor'
 gem 'foreman'
 gem 'dotenv'
+gem 'json'
 
 
 group :development do

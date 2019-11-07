@@ -11,11 +11,10 @@ class ApplicationController < Sinatra::Base
     enable :sessions
     set :session_secret, ENV.fetch('SESSION_SECRET') 
   end
-    
+  
   get '/' do
-    erb :'user/index'
+    erb :'users/index'
   end
-
   private
 
     def logged_in?(session)

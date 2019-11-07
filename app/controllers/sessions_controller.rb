@@ -1,6 +1,6 @@
 require './config/environment'
 
-class SessionController < ApplicationController
+class SessionsController < ApplicationController
   
   get '/signup' do
     erb :'sessions/signup'
@@ -19,18 +19,17 @@ class SessionController < ApplicationController
 
   get '/login' do
     @users = User.all
-    erb :'/users/login'
+    erb :'/sessions/login'
   end
   
   post '/login' do
-    if logged_in?    
-     user = User.find_by(:username => params[:username])
-    end
+    user = User.find_by(username: params[:username])
 
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      # session[:first_name] = user.first_name
-      # session[:last_logged_in_at] = DateTime.now
+      session[:first_name] = user.first_name
+      session[:last_logged_in_at] = DateTime.now
+      # binding.pry
       redirect "/account"
     else
       redirect "/failure"
@@ -38,10 +37,10 @@ class SessionController < ApplicationController
   end
 
 
-  get 'account' do
-    if @current_user.id
+  get '/account' do
+    if logged_in?(session)
       @current_user = User.find_by_id(session[:user_id])
-      erb :'users/user_venues'
+      erb :'/sessions/success'
     else
       redirect '/failure'
     end
