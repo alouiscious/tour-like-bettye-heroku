@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 4) do
+ActiveRecord::Schema.define(version: 5) do
 
   create_table "user_venues", force: :cascade do |t|
     t.integer  "user_id"
@@ -46,6 +46,14 @@ ActiveRecord::Schema.define(version: 4) do
     t.string   "phone"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "description"
+    t.string   "website"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "postal_code"
+    t.string   "longitude"
+    t.string   "latitude"
   end
 
 end
