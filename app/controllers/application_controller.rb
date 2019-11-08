@@ -5,7 +5,7 @@ class ApplicationController < Sinatra::Base
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'
-    # set :views, Proc.new { File.join(root, "./views") }
+    # set :views, Proc.new { File.join(root, "views") }
     # register Sinatra::Flash
     # register Sinatra::ActiveRecordExtension
     enable :sessions
@@ -13,7 +13,7 @@ class ApplicationController < Sinatra::Base
   end
   
   get '/' do
-    erb :'users/index'
+    erb :'/users/index'
   end
   private
 

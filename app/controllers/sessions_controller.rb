@@ -29,15 +29,13 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       session[:first_name] = user.first_name
       session[:last_logged_in_at] = DateTime.now
-      # binding.pry
-      redirect "/account"
+      redirect "/user"
     else
       redirect "/failure"
     end
   end
 
-
-  get '/account' do
+  get '/user' do
     if logged_in?(session)
       @current_user = User.find_by_id(session[:user_id])
       erb :'/sessions/success'
@@ -45,7 +43,6 @@ class SessionsController < ApplicationController
       redirect '/failure'
     end
   end
-
 
   get '/failure' do
     erb :'/sessions/failure'
