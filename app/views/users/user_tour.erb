@@ -6,11 +6,11 @@ user_tour.erb
 <h3>Link to a venue for its details. </h3>
 <% @venues.each do |venue| %>
   <form action="/users/tour" method="POST">
+    <label for="<%= venue.id %>"><a href="<%= venue %>"><%= venue.name %></a>
     <input type="checkbox" name="user[venue_ids][]" id="<%= venue.id %>" value="<%= venue.id %>"><%= venue.name %>
-    <br>
     <br>
 <% end %>
   <h3>Check the links for venues you with to tour.</h3>  
-  <input id="user_venues" type="submit" value="Create/Add Tour Venue">
+  <input id="user_venues" type="submit" value="Create/Add Tour Item">
 
   </form>
