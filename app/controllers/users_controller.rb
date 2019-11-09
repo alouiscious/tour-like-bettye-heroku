@@ -5,7 +5,6 @@ class UsersController < ApplicationController
   
   get '/users/tour' do
     @venues = Venue.all
-binding.pry
 
     # @users = Users.all
     erb :'/users/user_tour'
