@@ -1,34 +1,35 @@
-data = []
-require 'json'
-require 'open-uri'
+# data = []
+# require 'json'
+# require 'open-uri'
 
-class Loader
-  @@venues = []
+# class Loader
+#   @@venues = []
 
-  def self.load_data(url)
-    results = JSON.parse(open(url).read)
-    next_link = results["meta"]["pagination"]["links"]["next"]
-    @@venues = data.concat(results["data"])
+#   def self.load_data(url)
+#     results = JSON.parse(open(url).read)
+#     next_link = results["meta"]["pagination"]["links"]["next"]
+#     @@venues = data.concat(results["data"])
 
-    if next_link
-      load_data(next_link)
-    end
-  end
+#     if next_link
+#       load_data(next_link)
+#     end
+#   end
 
-  def self.data
-    @@venues
-  end
-end
-
-
-# Loader.load_data('https://www.indieonthemove.com/venues?genre=9&sort_by=popularity&sort_order=descending')
-Loader.load_data('https://www.indieonthemove.com/api/venues?include=genres,blacklist_genres&genre=9&sort_by=popularity&sort_order=descending')
+#   def self.data
+#     @@venues
+#   end
+# end
 
 
-// 20191106222245
-// https://www.indieonthemove.com/api/venues?include=genres,blacklist_genres&genre=9&sort_by=popularity&sort_order=descending
+# # Loader.load_data('https://www.indieonthemove.com/venues?genre=9&sort_by=popularity&sort_order=descending')
+# Loader.load_data('https://www.indieonthemove.com/api/venues?include=genres,blacklist_genres&genre=9&sort_by=popularity&sort_order=descending')
 
-{
+
+# // 20191106222245
+# // https://www.indieonthemove.com/api/venues?include=genres,blacklist_genres&genre=9&sort_by=popularity&sort_order=descending
+
+class Seed_Loader
+  @@seeder = {
   "data": [
     {
       "uuid": "925704e3-ae84-4e07-ac3f-26ac66f75a10",
@@ -881,3 +882,5 @@ Loader.load_data('https://www.indieonthemove.com/api/venues?include=genres,black
     }
   }
 }
+
+end

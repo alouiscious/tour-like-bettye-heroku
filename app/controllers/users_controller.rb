@@ -5,9 +5,9 @@ class UsersController < ApplicationController
   
   get '/users/tour' do
     @venues = Venue.all
+binding.pry
 
     # @users = Users.all
-    # binding.pry
     erb :'/users/user_tour'
   end
 
@@ -17,7 +17,10 @@ class UsersController < ApplicationController
   end
 
   post 'users/tour' do
-    
+
+    @user_venues = UserVenue.create(params)
+    erb :'/users/edit'
+    # erb :'/users/tour'
   end
 
   get '/venues' do

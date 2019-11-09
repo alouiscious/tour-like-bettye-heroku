@@ -1,9 +1,10 @@
-<h2>
+<h2>Here are venues you can check out.</h2>
 <%@user = User.find(session[:user_id])%>
 
 "Let's get some gigs, <%= @user.first_name%>!"</h2>
-
+<form action="" method="POST">
 <% @venues.each do |venue| %>
   <input type="checkbox" name="user[venue_ids][]" id="<%= venue.id %>" value="<%= venue.id %>"><%= venue.name %>
   <br>
 <% end %>
+</form>

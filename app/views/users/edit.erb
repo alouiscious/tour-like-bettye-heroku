@@ -1,2 +1,20 @@
 
 <h1>Update your venue list<%= @user_venues.id%></h1>
+
+user_tour.erb
+
+<% @user = User.find(session[:user_id]) %>
+<h2>"Let's get some gigs, <%=@user.first_name%>!"</h2>
+<% Venue.create(name: "Red Brick Bar", phone: "405.579.6227", website: "http://www.facebook.com/pages/Red-Brick-Bar/416655671758921", description: "<p>\n\tLive music can be held any night of the week. Friday night shows tend to be Singer-Songwriters from 7-9 PM as they have karaoke later in the evening. Tuesday shows are sporadic.</p>", postal_code: "73069", state: "Oklahoma", city: "Norman", address: "311 E. Main Street", longitude: -97.4402, latitude: 35.2226) %>
+
+
+<% @venues.each do |venue| %>
+
+<form action="/users/tour" method="POST">
+  <input type="checkbox" name="user[venue_ids][]" id="<%= venue.id %>" value="<%= venue.id %>"><%= venue.name %>
+  <br>
+  <h3>Link to a venue for its details.
+  <br>
+  Check the links for venues you with to tour.</h3>  
+<% end %>
+</form>

@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -14,46 +13,46 @@
 ActiveRecord::Schema.define(version: 5) do
 
   create_table "user_venues", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "venues_id"
-    t.boolean  "status"
-    t.string   "notes"
+    t.integer "user_id"
+    t.integer "venues_id"
+    t.boolean "status"
+    t.string "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email"
-    t.string   "password_digest"
-    t.string   "phone"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.string   "username"
-    t.string   "bandname"
-    t.string   "fullname"
-    t.string   "nickname"
-    t.string   "zipcode"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "password_digest"
+    t.string "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "username"
+    t.string "bandname"
+    t.string "fullname"
+    t.string "nickname"
+    t.string "zipcode"
   end
 
   create_table "venues", force: :cascade do |t|
-    t.string   "name"
-    t.string   "booking"
-    t.string   "box_office"
-    t.string   "email"
-    t.string   "password_digest"
-    t.string   "phone"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.string   "description"
-    t.string   "website"
-    t.string   "address"
-    t.string   "city"
-    t.string   "state"
-    t.string   "postal_code"
-    t.string   "longitude"
-    t.string   "latitude"
+    t.string "name"
+    t.string "booking"
+    t.string "box_office"
+    t.string "email"
+    t.string "password_digest"
+    t.string "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "description"
+    t.string "website"
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.string "postal_code"
+    t.string "longitude"
+    t.string "latitude"
   end
 
 end
