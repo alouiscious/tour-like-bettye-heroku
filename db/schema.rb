@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 5) do
 
   create_table "user_venues", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "venues_id"
+    t.integer "venue_id"
     t.boolean "status"
     t.string "notes"
     t.datetime "created_at", null: false

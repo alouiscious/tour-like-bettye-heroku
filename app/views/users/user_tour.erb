@@ -1,14 +1,16 @@
 user_tour.erb
 
 <% @user = User.find(session[:user_id]) %>
-<h2>"Let's get some gigs, <%=@user.first_name%>!"</h2>
-<% @venues.each do |venue| %>
+<h2>"Let's get some gigs, <%=@user.first_name.capitalize%>!"</h2>
 
-<form action="/users/tour" method="POST">
-  <input type="checkbox" name="user[venue_ids][]" id="<%= venue.id %>" value="<%= venue.id %>"><%= venue.name %>
-  <br>
-  <h3>Link to a venue for its details.
-  <br>
-  Check the links for venues you with to tour.</h3>  
+<h3>Link to a venue for its details. </h3>
+<% @venues.each do |venue| %>
+  <form action="/users/tour" method="POST">
+    <input type="checkbox" name="user[venue_ids][]" id="<%= venue.id %>" value="<%= venue.id %>"><%= venue.name %>
+    <br>
+    <br>
 <% end %>
-</form>
+  <h3>Check the links for venues you with to tour.</h3>  
+  <input id="user_venues" type="submit" value="Create/Add Tour Venue">
+
+  </form>

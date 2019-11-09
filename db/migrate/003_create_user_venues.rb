@@ -1,8 +1,8 @@
-class CreateUserVenues < ActiveRecord::Migration
+class CreateUserVenues < ActiveRecord::Migration[5.2]
   def change 
     create_table :user_venues do |t|
       t.integer :user_id
-      t.integer :venues_id
+      t.integer :venue_id
       t.boolean  :status
       t.string :notes
       

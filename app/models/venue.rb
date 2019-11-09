@@ -3,6 +3,14 @@ class Venue < ActiveRecord::Base
   has_many :user_venues
   has_many :venues, through: :user_venues
 
+
+
+
+
+
+
+
+  
   # DB = {:conn => SQLite3::Database("db/venues.db")}
 
   # def self.create(name, phone, website, description, postal_code, state, city, address, longitude, latitude)

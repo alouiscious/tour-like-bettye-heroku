@@ -1,4 +1,4 @@
-class AddVenueColumns < ActiveRecord::Migration
+class AddVenueColumns < ActiveRecord::Migration[5.2]
   def change 
     add_column :venues, :description, :string 
     add_column :venues, :website, :string 

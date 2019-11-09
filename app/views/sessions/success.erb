@@ -1,7 +1,7 @@
 success.erb
 
 <%@user = User.find(session[:user_id])%>
-<h2>"Welcome, <%= @user.first_name %>!"</h2>
+<h2>"Welcome, <%= @user.first_name.capitalize %>!"</h2>
 <p>I sayyyyy welcome to the start you the first major tour.<br>
 Use the reserch and mapping tools to discover venues that are a perfect fit for your performaces.</p>
 
@@ -18,6 +18,6 @@ Use the reserch and mapping tools to discover venues that are a perfect fit for 
 <a href="/users/tour">Resume Tour Planning</a>
 <!-- # show existing tour and venue selection-->
 
-<a href="/bettye_venues">Find Tour Stops</a> 
+<a href="/venues">Find Tour Stops</a> 
 <!-- Research additional tour stops.-->
 <br> Goodluck, Alouiscious.
