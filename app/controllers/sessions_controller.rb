@@ -36,7 +36,8 @@ class SessionsController < ApplicationController
   end
 
   get '/user' do
-    if logged_in?(session)
+    # binding.pry
+    if Helpers.logged_in?(session)
       @current_user = User.find_by_id(session[:user_id])
       erb :'/sessions/success'
     else

@@ -7,7 +7,7 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
     # set :views, Proc.new { File.join(root, "views") }
     # register Sinatra::Flash
-    # register Sinatra::ActiveRecordExtension
+    register Sinatra::ActiveRecordExtension
     enable :sessions
     set :session_secret, ENV.fetch('SESSION_SECRET') 
   end
@@ -17,11 +17,11 @@ class ApplicationController < Sinatra::Base
   end
   private
 
-    def logged_in?(session)
+    def self.logged_in?(session)
       !!session[:user_id]
     end
   
-    def current_user(session)
+    def self.current_user(session)
       User.find(session[:user_id])
     end
     

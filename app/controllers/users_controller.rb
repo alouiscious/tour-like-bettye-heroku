@@ -4,19 +4,27 @@ class UsersController < ApplicationController
 
   get '/users/tour' do
     @venues = Venue.all
+    @user = User.all
+    # binding.pry
     erb :'/users/user_tour'
   end
 
-  get '/users/new' do
-
-    erb :'/users/user'
-  end
 
   post '/users/tour' do
-    binding.pry
-    @user = User.create(params["user"])
-    @user.venues << Venue.create(name: params["venuecreat"]["name"])
+    if Helpers.logged_in?(session)
+      @user = Helpers.current_user(session)
+      @user = User.update(params[:user])
+    # binding.pry
+    end
+    redirect "/users/#{session[:user_id]}"
+    # erb :'/users/edit'
+  end
 
+  get '/users/:id' do
+    @venues = Venue.all
+    @user = User.find_by_id(session[:user_id])
+    @user_venues = UserVenue.all
+    # binding.pry
     erb :'/users/edit'
   end
 
@@ -28,5 +36,11 @@ class UsersController < ApplicationController
     erb :'/user/edit'
   end
 
+  patch '/users_tour' do
 
+  end
+
+  delete 'users_tour' do
+
+  end
 end
