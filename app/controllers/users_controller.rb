@@ -3,8 +3,11 @@ require './config/environment'
 class UsersController < ApplicationController
 
   get '/users/tour' do
-    @venues = Venue.all
-    @user = User.all
+    if Helpers.current_user(session)
+      @venues = Venue.all
+      @user = User.all
+      @user_venues = UserVenue.all
+    end
     # binding.pry
     erb :'/users/user_tour'
   end
@@ -14,33 +17,64 @@ class UsersController < ApplicationController
     if Helpers.logged_in?(session)
       @user = Helpers.current_user(session)
       @user = User.update(params[:user])
-    # binding.pry
     end
     redirect "/users/#{session[:user_id]}"
-    # erb :'/users/edit'
   end
 
   get '/users/:id' do
     @venues = Venue.all
-    @user = User.find_by_id(session[:user_id])
+    @user = Helpers.current_user(session)
     @user_venues = UserVenue.all
-    # binding.pry
+    
     erb :'/users/edit'
   end
+
+  
+  post '/users/:id' do
+    @venues = Venue.all
+    @user = Helpers.current_user(session)
+    @user_venues = UserVenue.all
+    if !params[:user].keys.include?("venue_ids")
+    binding.pry
+      params[:user]["venue_ids"] = []
+    end
+
+    @user = User.find(params[:id])
+    @user.update(params["user"])
+    if !params["venue"]["name"].empty?
+      @user.venues << Venue.create(name: params["venue"]["name"])
+    end
+    redirect "/users/:id"
+  end
+  
+  patch '/users/:id' do
+    @venues = Venue.all
+    @user = Helpers.current_user(session)
+    @user_venues = UserVenue.all
+    binding.pry
+    if !params[:user].keys.include?("venue_ids")
+      params[:user]["venue_ids"] = []
+    end
+
+    @user = User.find(params[:id])
+    @user.update(params["user"])
+    # if !params["venue"]["name"].empty?
+    #   @user.venues << Venue.create(name: params["venue"]["name"])
+    # end  
+    redirect "/users/:id"
+    # erb :'/users/user_tour'
+  end
+
 
   get '/venues' do
     erb :'/venues/bettye_venues'
   end
 
   post '/venues' do
-    erb :'/user/edit'
+    erb :'/venues/bettye_venues'
   end
 
-  patch '/users_tour' do
-
-  end
-
-  delete 'users_tour' do
-
+  delete "/users/:id/delete" do    session.clear
+    erb :'/users/index'
   end
 end

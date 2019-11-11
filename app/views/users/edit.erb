@@ -1,29 +1,45 @@
 edit.erb
-<h1>Update your details and venue list<%= @user.name%></h1>
 
 
-<h2>"Check out your current tour stops, <%@user_venues.each do |id|
-  if user.id == session[:user_id]
-    
-first_name%>!"</h2>
+  <div class="user_detail_edits">
+    <form action="/users/<%=@user.id%>" method="POST">
 
-
-
-<h3>Link to a venue for its details.
-<form action="/users/tour" method="POST">
-<% @venues.each do |venue| %>
-  <input type="checkbox" name="user[venue_ids][]" id="<%= venue.id %>" value="<%= venue.id %>" <%'checked' if @user.venues.include?(venue)%>>  <label for="<%= venue.id %>"><a href="<%= venue %>"><%= venue.name %></a></label>
-  <h5>      <%=venue.city%>, <%= venue.state%></h5>
-  <br>
-<% end %>
-<h3>Check the venues you wish to tour.</h3>  
-</h3>
-
-    <h3>Custom Venue</h3>
-    <label>Venue Name: </label>
+      <input id="hidden" type="hidden" name="_method" value="patch">
+      <label>Edit your User details:</label>
+      <br>
+      <input type="text" name="user[first_name]" value="<%= @user.first_name %>" placeholder="Edit your first name"/>
+      <input id="user_details" type="submit" value="Update Your Details">      
+    </form>
     <br>
-    <input type="text" name="venue[name]" id="venue_name">
+  </div>
+
+  <div class="edit_user_venues">
+      <h3>Link to a venue for its details.</h3>
+      <form action="/users/<%=@user.id%>" method="POST">
+      <input id="hidden" type="hidden" name="_method" value="patch">      
+      <% @venues.each do |venue| %>
+        <input type="checkbox" name="user[venue_ids][]" id="<%= venue.id %>" value="<%= venue.id %>" <%='checked' if @user.venues.include?(venue) %>> 
+        <label for="<%= venue.id %>"><a href="<%= venue %>"><%= venue.name %></a></label>
+        <h5>      <%=venue.city%>, <%= venue.state%></h5>
+      <% end %>
+            <input id="edit_tour_stops" type="submit" value="Update Tour Stops">
+      </form>
+      <h3>Check the venues you wish to tour.</h3> 
+      <br>
+  </div>
+
+
+
+  <div class="custom_venue">
+      <h3>Create Your Custom Venue</h3>
+      <form action="/users/<%=@user.id%>" method="POST">
+      <input id="hidden" type="hidden" name="_method" value="patch">
+      <label>Venue Name: </label>
+    <br>
+      <input type="text" name="venue[name]" id="venue_name" placeholder="Enter venue name...">
     <br><br>
- 
-    <input id="add_venue" type="submit" value="Add Custom Venue">
-</form>
+    
+      <input id="edit_tour" type="submit" value="Add Your Edits">
+    </form>
+    
+  </div>
