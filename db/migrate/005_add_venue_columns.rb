@@ -8,5 +8,5 @@ class AddVenueColumns < ActiveRecord::Migration[5.2]
     add_column :venues, :postal_code, :string
     add_column :venues, :longitude, :string
     add_column :venues, :latitude, :string
-     end
+  end
 end

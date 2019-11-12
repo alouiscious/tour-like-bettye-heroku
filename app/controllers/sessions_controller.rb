@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
     if @user.save
       redirect "/login"
     else
-      # redirect "/session/failure"
+      # redirect "/failure"
       erb :'/sessions/failure'
     end
       @users = User.all
@@ -35,15 +35,7 @@ class SessionsController < ApplicationController
     end
   end
 
-  get '/user' do
-    # binding.pry
-    if Helpers.logged_in?(session)
-      @current_user = User.find_by_id(session[:user_id])
-      erb :'/sessions/success'
-    else
-      redirect '/failure'
-    end
-  end
+
 
   get '/failure' do
     erb :'/sessions/failure'

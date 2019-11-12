@@ -12,7 +12,7 @@ index.erb
 
             <div class="sidebar">
                   <% if session[:first_name]%>
-                        <h3>Welcome <%= session[:first_name] %></h3>
+                        <h3>Welcome Back <%= session[:first_name] %></h3>
                   <ul>
                         <li><b>Last Update:</b> <%= session[:last_logged_in_at] %>
                   <%elsif !session[:first_name]%>
