@@ -2,53 +2,47 @@ user_venues.erb rename to tour_show
 add a tours controller
 
 <% @user = User.find(session[:user_id]) %>
-<h2>"Let's get some gigs, <%=@user.first_name.capitalize%>!"</h2>
+<h2>"Here are your tour details, <%=@user.first_name.capitalize%>!"</h2>
 
-<h3>Link to a venue for its details. </h3>
-<form action="/users/tour" method="POST">
- <div class="sidebar">
-                  <% if session[:first_name]%>
-                        <h3>Welcome Back <%= session[:first_name].capitalize %></h3>
-                  <ul>
-                        <li><b>Last Update:</b> <%= session[:last_logged_in_at] %>
-                  <%elsif !session[:first_name]%>
-                        <h3>Welcome New Artist</h3> 
-                  <ul>
-                        <li><b>First Update:</b> New User </li>
-                  <%end%>
-                        <li><b>Created with Ruby:</b> <%= RUBY_VERSION %></li>
-                        <li><b>Environment:</b> <%= ENV["RACK_ENV"] %></li>
-                        <li><b>Server:</b> <%= @env["SERVER_SOFTWARE"] %></li>
-                        <li><b>Port:</b> <%= @env["SERVER_PORT"] %></li>
-                  </ul>
-            </div>
+<div class="sidebar">
+      <form action="/user/edit" method="GET">
+            <ul>           
+            <li>Your Name: <%= @user.first_name.capitalize %><%= @user.last_name.capitalize%></li>
+            <li><b>Username:</b> <%= @user.username %>
 
-<div class="selected_venues">
-      <input id="hidden" type="hidden" name="_method" value="patch">      
-      <% @venues.each do |venue| %>
-        <input type="checkbox" name="user[venue_ids][]" id="<%= venue.id %>" value="<%= venue.id %>" <%='checked' if @user.venues.include?(venue) %>> 
-        <label for="<%= venue.id %>"><a href="<%= venue %>"><%= venue.name %></a></label>
-        <h5>      <%=venue.city%>, <%= venue.state%></h5>
-      <% end %>
-            <input id="edit_tour_stops" type="submit" value="Update Tour Stops">
-      
-
-
+            <li><b>Nickname:</b> <%= @user.nickname %></li>
+            <li><b>Band/Artist Name:</b> <%= @user.bandname %></li>
+            <li><b>Email:</b> <%= @user.email %></li>
+            <li><b>Phone:</b> <%= @user.phone %></li>
+            </ul>
+      <input id="user_edits" type="submit" value="Edit Details">
+      </form>
 
 </div>
 
-<div class="new_venues">
+<div class="selected_venues">
+<h3>Click for venue details. </h3>
+<form action="/venues/edit" method="GET">
+      <% @venues.each do |venue| %>
+            <% if @user.venues.include?(venue) %>
+                  <input type="checkbox" name="user[venue_ids][]" id="<%= venue.id %>" value="<%= venue.id %>" <%='checked' if @user.venues.include?(venue) %>> 
+                  <label for="<%= venue.id %>"><a href="<%= venue %>"><%= venue.name %></a></label>
+                  <h5>      <%=venue.city%>, <%= venue.state%></h5>
+            <% end %>
+      <% end %>
+
+</form>   
+
+
+<div>
   <h3>Check the venues you wish to tour.</h3>  
-  <%%>
-  <% @user_venues.each do |id| if id == Helpers.current_user(session)%> 
-    <%id.each do |venue|%>
+
+<% @venues.each do |venue| %>
+<form action="/users/edit" method="POST">
     <input type="checkbox" name="user[venue_ids][]" id="<%= venue.id %>" value="<%= venue.id %>">    
     <label for="<%= venue.id %>"><a href="<%= venue %>"><%= venue.name %></a></label>
     <h5>      <%=venue.city%>, <%= venue.state%></h5>
-    <% end %>
-  <% end %>
-  <% end %>
+<% end %>
   <input id="user_venues" type="submit" value="Create/Add Tour Item">
-
+</form>
 </div>
-  </form>
