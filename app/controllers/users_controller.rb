@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     #     end
     #   end
     # end
-    erb :'/users/user_venues'
+    erb :'/users/user_show'
   end
   
   get '/users/new' do
@@ -84,19 +84,16 @@ class UsersController < ApplicationController
     #   @user.venues << Venue.create(name: params["venue"]["name"])
     # end  
     redirect "/users/:id"
-    # erb :'/users/user_venues'
+    # erb :'/users/user_show'
   end
 
 
-  get '/venues' do
-    erb :'/venues/bettye_venues'
-  end
 
-  post '/venues' do
-    erb :'/venues/bettye_venues'
-  end
 
-  delete "/users/:id/delete" do    session.clear
+
+
+  delete "/users/:id/delete" do    
+    session.clear
     erb :'/users/index'
   end
 end

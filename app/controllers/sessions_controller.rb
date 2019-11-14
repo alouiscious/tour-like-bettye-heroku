@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   end
 
   post '/signup' do
-    @user = User.create(:username => params[:username], :password => params[:password], :email => params[:email], :phone => params[:phone], :bandname => params[:bandname], :first_name => params[:first_name], :last_name => params[:last_name], :fullname => params[:fullname], :nickname => [:nickname], :zipcode => params[:zipcode])
+    @user = User.create(:username => params[:username], :password => params[:password], :email => params[:email], :phone => params[:phone], :bandname => params[:bandname], :first_name => params[:first_name], :last_name => params[:last_name], :fullname => params[:fullname], :nickname => params[:nickname], :zipcode => params[:zipcode])
     if @user.save
       redirect "/login"
     else
