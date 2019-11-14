@@ -1,15 +1,7 @@
 require './config/environment'
 
 class UsersController < ApplicationController
-  get '/user' do
-    # binding.pry
-    if Helpers.logged_in?(session)
-      @current_user = User.find_by_id(session[:user_id])
-      erb :'/sessions/success'
-    else
-      redirect '/failure'
-    end
-  end
+
 
   get '/users/venues' do
     if Helpers.current_user(session)
@@ -56,7 +48,6 @@ class UsersController < ApplicationController
     @venues = Venue.all
     @user = Helpers.current_user(session)
     @tours = Tour.all
-    binding.pry
       if !params[:user].keys.include?("venue_ids")
         params[:user]["venue_ids"] = []
       end

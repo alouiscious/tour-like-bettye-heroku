@@ -8,14 +8,12 @@ class SessionsController < ApplicationController
 
   post '/signup' do
     @user = User.create(:username => params[:username], :password => params[:password], :email => params[:email], :phone => params[:phone], :bandname => params[:bandname], :first_name => params[:first_name], :last_name => params[:last_name], :fullname => params[:fullname], :nickname => params[:nickname], :zipcode => params[:zipcode])
-    binding.pry
     if @user.save
-      redirect "/login"
+      redirect "/login" #ask about autologin
     else
       # redirect "/failure"
       erb :'/sessions/failure'
     end
-      @users = User.all
   end
 
   get '/login' do
@@ -36,7 +34,15 @@ class SessionsController < ApplicationController
     end
   end
 
-
+  get '/user' do
+    # binding.pry
+    if Helpers.logged_in?(session)
+      @current_user = User.find_by_id(session[:user_id])
+      erb :'/sessions/success'
+    else
+      redirect '/failure'
+    end
+  end
 
   get '/failure' do
     erb :'/sessions/failure'
