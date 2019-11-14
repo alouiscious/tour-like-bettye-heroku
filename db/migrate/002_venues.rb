@@ -4,9 +4,9 @@ class Venues < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :booking
       t.string :box_office
-      t.email :email
+      t.string :email
       t.string :password_digest
-      t.phone :phone
+      t.string :phone
       t.string :description 
       t.string :website 
       t.string :address 

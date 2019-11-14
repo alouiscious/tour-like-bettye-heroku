@@ -17,7 +17,7 @@ where the id is not included in tours ids
 
   <div class="edit_tours">
       <h3>Link to a venue for its details.</h3>
-      <form action="/users/<%=@user.id%>" method="POST">
+      <form action="/venues/<%=@user.id%>/edit" method="POST">
       <input id="hidden" type="hidden" name="_method" value="patch">      
       <% @venues.each do |venue| %>
         <input type="checkbox" name="user[venue_ids][]" id="<%= venue.id %>" value="<%= venue.id %>" <%='checked' if @user.venues.include?(venue) %>> 

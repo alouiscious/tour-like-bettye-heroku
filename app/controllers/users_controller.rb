@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     #     end
     #   end
     # end
-    erb :'/users/user_tour'
+    erb :'/users/tour'
   end
   
   get '/users/new' do
@@ -56,8 +56,8 @@ class UsersController < ApplicationController
     @venues = Venue.all
     @user = Helpers.current_user(session)
     @tours = Tour.all
+    binding.pry
       if !params[:user].keys.include?("venue_ids")
-      binding.pry
         params[:user]["venue_ids"] = []
       end
 
