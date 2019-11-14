@@ -12,7 +12,7 @@ class VenuesController < ApplicationController
   patch '/venues/:id' do
     @venues = Venue.all
     @user = Helpers.current_user(session)
-    @user_venues = UserVenue.all
+    @tours = Tour.all
     # binding.pry
       if !params[:user].keys.include?("venue_ids")
         params[:user]["venue_ids"] = []
@@ -24,7 +24,7 @@ class VenuesController < ApplicationController
     #   @user.venues << Venue.create(name: params["venue"]["name"])
     # end  
     redirect "/users/:id"
-    # erb :'/users/user_show'
+    # erb :'/users/user_tour'
   end
 end
 

@@ -15,11 +15,11 @@ class UsersController < ApplicationController
     if Helpers.current_user(session)
       @venues = Venue.all
       @user = User.all
-      @user_venues = UserVenue.all
+      @tours = Tour.all
     end
 
     # if !params[:user].keys.include?("venue_ids")
-    #   @user_venues.each do |id| 
+    #   @tours.each do |id| 
     #     if id.user_id == Helpers.current_user(session)
     #       @venues.map do |venue|
     #         venue_ids 
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     #     end
     #   end
     # end
-    erb :'/users/user_show'
+    erb :'/users/user_tour'
   end
   
   get '/users/new' do
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
   get '/users/:id' do
     @venues = Venue.all
     @user = Helpers.current_user(session)
-    @user_venues = UserVenue.all
+    @tours = Tour.all
     
     erb :'/users/edit'
   end
@@ -55,7 +55,7 @@ class UsersController < ApplicationController
   post '/users/:id' do
     @venues = Venue.all
     @user = Helpers.current_user(session)
-    @user_venues = UserVenue.all
+    @tours = Tour.all
       if !params[:user].keys.include?("venue_ids")
       binding.pry
         params[:user]["venue_ids"] = []
@@ -72,7 +72,7 @@ class UsersController < ApplicationController
   patch '/users/:id' do
     @venues = Venue.all
     @user = Helpers.current_user(session)
-    @user_venues = UserVenue.all
+    @tours = Tour.all
     # binding.pry
       if !params[:user].keys.include?("venue_ids")
         params[:user]["venue_ids"] = []
@@ -84,7 +84,7 @@ class UsersController < ApplicationController
     #   @user.venues << Venue.create(name: params["venue"]["name"])
     # end  
     redirect "/users/:id"
-    # erb :'/users/user_show'
+    # erb :'/users/user_tour'
   end
 
 

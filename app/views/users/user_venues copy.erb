@@ -1,4 +1,4 @@
-user_venues.erb rename to user_show
+tours.erb rename to user_tour
 add a tours controller
 
 <% @user = User.find(session[:user_id]) %>
@@ -15,6 +15,6 @@ add a tours controller
 
 <% end %>
   <h3>Check the venues you wish to tour.</h3>  
-  <input id="user_venues" type="submit" value="Create/Add Tour Item">
+  <input id="tours" type="submit" value="Create/Add Tour Item">
 
   </form>

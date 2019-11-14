@@ -1,6 +1,6 @@
 edit.erb user reject to sort out the selected venues.
 active record scope method or consider a join query
-where the id is not included in user_venues ids
+where the id is not included in tours ids
 
 
   <div class="user_detail_edits">
@@ -15,7 +15,7 @@ where the id is not included in user_venues ids
     <br>
   </div>
 
-  <div class="edit_user_venues">
+  <div class="edit_tours">
       <h3>Link to a venue for its details.</h3>
       <form action="/users/<%=@user.id%>" method="POST">
       <input id="hidden" type="hidden" name="_method" value="patch">      
