@@ -16,7 +16,7 @@ GEM
       public_suffix (>= 2.0.2, < 6.0)
     ast (2.4.2)
     backport (1.1.2)
-    bcrypt (3.1.16)
+    bcrypt (3.1.22)
     benchmark (0.1.1)
     bond (0.5.1)
     capybara (3.35.3)
